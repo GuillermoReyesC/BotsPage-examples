@@ -27,7 +27,7 @@ function toggleMenu(id) {
 }
 
 /* ── FONT SWITCHER ── */
-const loadedFonts = new Set(['Ubuntu']);
+const loadedFonts = new Set(['IBM Plex Sans']);
 function setFont(fontName) {
   if (!loadedFonts.has(fontName)) {
     const link = document.createElement('link');
@@ -45,6 +45,40 @@ function setFont(fontName) {
   });
 }
 
+/* LISTA de fuentes sin apykey) */
+const FONT_LIST = [
+  "Inter","Work Sans","Poppins","Nunito","Outfit","DM Sans","Lato","Raleway",
+  "Open Sans","Roboto","Montserrat","Ubuntu","Merriweather","Playfair Display",
+  "Lexend","Quicksand","Karla","Bebas Neue","Oswald","Pacifico",
+
+  // adicionales
+  "Manrope","Space Grotesk","Plus Jakarta Sans","Rubik","Figtree",
+  "Urbanist","Public Sans","Libre Franklin","Hind","Cabin",
+  "Archivo","Barlow","Barlow Condensed","Assistant","Heebo",
+  "Teko","Rajdhani","Sora","Mulish","PT Sans",
+  "PT Serif","Noto Sans","Noto Serif","IBM Plex Sans","IBM Plex Serif",
+  "Red Hat Display","Red Hat Text","Signika","Exo 2","Kanit"
+];
+
+/* GENERAR OPTIONS DINÁMICAMENTE */
+function populateFonts() {
+  const select = document.querySelector('.font-select');
+  select.innerHTML = '';
+
+  FONT_LIST.forEach(f => {
+    const opt = document.createElement('option');
+    opt.value = f;
+    opt.textContent = f;
+    if (f === 'IBM Plex Sans') opt.selected = true;
+    select.appendChild(opt);
+  });
+}
+
+
+
+/* INIT */
+populateFonts();
+
 injectLogos();
 show(2);
-setFont('Ubuntu');
+setFont('IBM Plex Sans');
