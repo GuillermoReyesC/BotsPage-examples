@@ -1,22 +1,14 @@
 /* ── LOGO INJECT ── */
 function injectLogos() {
   const tpl = document.getElementById('logo-svg-tpl');
-  ['d1-logo','d2-logo','d3-logo'].forEach(id => {
+  ['d2-logo'].forEach(id => {
     const el = document.getElementById(id);
     if (el) el.appendChild(tpl.content.cloneNode(true));
   });
 }
 
 /* ── DESIGN SWITCHER ── */
-function show(n) {
-  document.querySelectorAll('.mockup').forEach(m => m.classList.remove('active'));
-  document.querySelectorAll('.sel-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('d'+n).classList.add('active');
-  document.querySelectorAll('.sel-btn')[n-1].classList.add('active');
-  // close any open mobile menus
-  document.querySelectorAll('.mobile-menu').forEach(m => m.style.display='');
-  window.scrollTo(0,0);
-}
+
 
 /* ── HAMBURGER ── */
 function toggleMenu(id) {
@@ -60,24 +52,10 @@ const FONT_LIST = [
   "Red Hat Display","Red Hat Text","Signika","Exo 2","Kanit"
 ];
 
-/* GENERAR OPTIONS DINÁMICAMENTE */
-function populateFonts() {
-  const select = document.querySelector('.font-select');
-  select.innerHTML = '';
-
-  FONT_LIST.forEach(f => {
-    const opt = document.createElement('option');
-    opt.value = f;
-    opt.textContent = f;
-    if (f === 'IBM Plex Sans') opt.selected = true;
-    select.appendChild(opt);
-  });
-}
 
 
 
-/* INIT */
-populateFonts();
+
 
 injectLogos();
 show(2);
