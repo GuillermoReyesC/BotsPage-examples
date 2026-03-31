@@ -58,5 +58,5 @@ const FONT_LIST = [
 
 
 injectLogos();
-show(2);
+
 setFont('IBM Plex Sans');
